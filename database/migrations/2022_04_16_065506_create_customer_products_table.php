@@ -14,7 +14,8 @@ class CreateCustomerProductsTable extends Migration
     public function up()
     {
         Schema::create('customer_products', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('customer_id', false, true);
+            $table->integer('product_id', false, true);
             $table->timestamps();
         });
     }
