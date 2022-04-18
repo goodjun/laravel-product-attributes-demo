@@ -15,7 +15,7 @@ class CreateAttributeOptionsTable extends Migration
     {
         Schema::create('attribute_options', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id', false, true);
+            $table->integer('attribute_id', false, true);
             $table->char('name');
             $table->timestamps();
         });

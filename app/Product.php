@@ -11,6 +11,6 @@ class Product extends Model
     public function options()
     {
         return $this->belongsToMany(AttributeOption::class, 'customer_product_attributes')
-            ->with('attribute');
+            ->with('attribute')->withTimestamps();
     }
 }

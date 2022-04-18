@@ -13,4 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/customers/{customerId}/products', 'ProductController@getProducts');
+Route::group(['prefix' => 'customers'], function () {
+    Route::get('{customerId}/products/history', 'ProductController@getHistoryProducts');
+    Route::get('{customerId}/products', 'ProductController@getProducts');
+});
+
+Route::group(['prefix' => 'orders'], function () {
+    Route::post('', 'OrderController@createOrder');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'customers'], function () {
+        Route::get('{customerId}/products', 'Admin\ProductController@getProducts');
+        Route::put('{customerId}/products/{productId}', 'Admin\ProductController@updateProduct');
+    });
+});
